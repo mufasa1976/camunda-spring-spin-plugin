@@ -28,6 +28,17 @@ dependencies {
     compile "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:${camundaSpringBootStarterVersion}",
             'org.springframework.boot:spring-boot-starter-jdbc'
 
+    // Camunda Spin Plugin
+    compile 'org.camunda.spin:camunda-spin-core',
+            'org.camunda.spin:camunda-spin-dataformat-json-jackson', // used in case of application/json
+            'org.camunda.spin:camunda-spin-dataformat-xml-dom', // used in case of application/xml
+            'org.camunda.bpm:camunda-engine-plugin-spin'
+
+    // additional Jackson Modules
+    compile 'com.fasterxml.jackson.module:jackson-module-parameter-names',
+            'com.fasterxml.jackson.datatype:jackson-datatype-jdk8',
+            'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
     // ready to use Features of Spring Boot
     compile 'org.springframework.boot:spring-boot-actuator',
             'org.springframework.boot:spring-boot-devtools'

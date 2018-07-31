@@ -8,3 +8,4 @@ camunda:
       last-name: Newton
     deployment-resource-pattern:
     - classpath:/processes/**/*.bpmn
+    default-serialization-format: application/json
