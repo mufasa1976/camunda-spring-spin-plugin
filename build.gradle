@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    jcenter()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.camunda.bpm:camunda-bom:${camundaVersion}"
+    }
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+
+    // Camunda Starter (and JDBC-Starter because Camunda needs a relational Database)
+    compile "org.camunda.bpm.springboot:camunda-bpm-spring-boot-starter-webapp:${camundaSpringBootStarterVersion}",
+            'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // ready to use Features of Spring Boot
+    compile 'org.springframework.boot:spring-boot-actuator',
+            'org.springframework.boot:spring-boot-devtools'
+
+    // Database Drivers of relational Databases
+    runtime 'com.h2database:h2'
+}
+
+compileJava {
+    options.compilerArgs << '-parameters'
+}
