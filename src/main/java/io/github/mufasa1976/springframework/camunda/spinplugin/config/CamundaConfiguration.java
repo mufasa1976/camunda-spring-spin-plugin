@@ -173,7 +173,7 @@ public class CamundaConfiguration {
   }
 
   @Bean
-  public ProcessEnginePlugin spinPlugin() {
+  public ProcessEnginePlugin spinProcessEnginePlugin() {
     return new SpinProcessEnginePlugin() {
       @Override
       public void preInit(ProcessEngineConfigurationImpl processEngineConfiguration) {

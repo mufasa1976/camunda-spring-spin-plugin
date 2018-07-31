@@ -1,3 +1,11 @@
+spring:
+  jackson:
+    generator:
+      write-bigdecimal-as-plain: true
+    serialization:
+      write-dates-as-timestamps: false
+      write-dates-with-zone-id: true
+      indent-output: true
 camunda:
   bpm:
     admin-user:

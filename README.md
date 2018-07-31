@@ -42,7 +42,7 @@ To be fair, it is a little tricky (and not less painful).
    use the standard SPI ClassLoader):
    ```java
    @Bean
-   public ProcessEnginePlugin spinPlugin() {
+   public ProcessEnginePlugin spinProcessEnginePlugin() {
      return new SpinProcessEnginePlugin() {
        @Override
        public void preInit(ProcessEngineConfigurationImpl processEngineConfiguration) {
@@ -51,6 +51,8 @@ To be fair, it is a little tricky (and not less painful).
      };
    }
    ```
+   __ATTENTION__: you __MUST__ name the Spin-Plugin Bean `spinProcessEnginePlugin` or the Spin-Plugin will
+   be wired twice (and the second time with the wrong ClassLoader).
 6. At this Point the `JacksonJsonDataFormatConfigurer` will not be reloaded again. Instead the same ClassLoader  
    will be used and therefor the static Variable has the Content which has been read by the `ApplicationListener`.
 7. By having the Configuration Properties _within_ a `DataFormatConfigurator` now you can reconfigure the ObjectMapper  
